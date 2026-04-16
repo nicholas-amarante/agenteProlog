@@ -1,4 +1,4 @@
-%Como rodar o programa: 1-Instala swipl 2-Abre o swipl no terminal e executa o progrma com [akinator]. 
+%Como rodar o programa: 1-Instala swipl 2-Abre o swipl no terminal e executa o progrma com [akinator]. 3-Digita "jogar"
 
 jogar:-
     retractall(afirmacao(_)),
@@ -9,32 +9,44 @@ jogar:-
     write('Desculpa, não consegui adivinhar. É alguém muito nichado'), nl.
 
 adivinha(filipe_deschamps):-
-    eh(fala sobre noticias diarias),
-    eh(fala sobre ia).
+    eh(fala_sobre_ia),
+    eh(da_dicas_de_programacao),
+    eh(fala_sobre_curiosidades),
+    eh(produz_conteudo_tecnico).
 
 adivinha(fabio_akita):-
-    eh(produz videos longos),
-    eh(fala sobre ancestralidade tech),
-    eh(fala sobre ia),
-    eh(produz videos tecnicos).
+    eh(produz_videos_longos),
+    eh(fala_sobre_ancestralidade_tech),
+    eh(fala_sobre_ia),
+    eh(produz_conteudo_tecnico).
 
-adivinha(codigo fonte tv):-
-    eh(fala sobre noticias diarias),
-    eh(fala sobre curiosidades),
-    eh(fala sobre ia).
+adivinha(codigo_fonte_tv):-
+    eh(fala_sobre_noticias),
+    eh(fala_sobre_curiosidades),
+    eh(fala_sobre_ia),
+    eh(sao_um_casal).
 
-adivinha(gustavo guanabara):-
-    eh(ensina muito bem),
-    eh(produz videos tecnicos),
-    eh(tem relacao com gafanhotos).
+adivinha(gustavo_guanabara):-
+    eh(ensina_muito_bem),
+    eh(produz_conteudo_tecnico),
+    eh(tem_relacao_com_gafanhotos),
+    eh(produz_videos_longos).
 
-adivinha(karol attekita):-
-    eh(ensina muito bem),
-    eh(fala sobre curiosidades),
-    eh(fala sobre ia),
-    eh(produz videos tecnicos).
+adivinha(karol_attekita):-
+    eh(da_dicas_de_carreira),
+    eh(e_uma_mulher),
+    eh(fala_sobre_ia),
+    eh(produz_conteudo_tecnico).
 
+adivinha(mano_deyvin):-
+    eh(fala_sobre_curiosidades),
+    eh(fala_sobre_noticias),
+    eh(usa_uma_touca).
 
+adivinha(lucas_montano):-
+    eh(fala_sobre_ia),
+    eh(fala_sobre_noticias),
+    eh(tem_um_topetinho).
 
 eh(Caracteristica):-
     (afirmacao(Caracteristica)->true;
