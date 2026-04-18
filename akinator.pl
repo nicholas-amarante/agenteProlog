@@ -2,8 +2,11 @@
 
 jogar:-
     retractall(afirmacao(_)),
+    retractall(negacao(_)),
     adivinha(Influencer),
-    write('O influencer que você está pensando é: '), write(Influencer), nl.
+    aggregate_all(count, adivinha(_), Count),
+    write('O influencer que você está pensando é: '), write(Influencer), nl,
+    format('Eu consegui adivinhar em ~w tentativas!', [Count]), nl.
 
 jogar:-
     write('Desculpa, não consegui adivinhar. É alguém muito nichado'), nl.
@@ -48,7 +51,13 @@ adivinha(lucas_montano):-
     eh(fala_sobre_noticias),
     eh(tem_um_topetinho).
 
+ler_resposta(Resposta):-
+    read(Resposta),
+    (Resposta == s -> Resposta = s;
+    Resposta == n -> Resposta = n;
+    write('Resposta inválida. Por favor, responda com s ou n.'), ler_resposta(Resposta)).
+
 eh(Caracteristica):-
     (afirmacao(Caracteristica)->true;
-    (write('O seu influencer '), write(Caracteristica), write('? (s/n): '), read(Resposta), (Resposta== s ->assert(afirmacao(Caracteristica));
+    (format('O seu influencer ~w? (s/n): ', [Caracteristica]), ler_resposta(Resposta), (Resposta== s ->assert(afirmacao(Caracteristica));
     assert(negacao(Caracteristica)), fail))).
